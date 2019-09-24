@@ -1,0 +1,129 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FCC RWD Project 4 - Tech Doc</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<nav id="navbar">
+        <header>Basic Use of WP-CLI</header>
+        <ul> 
+          <a class="nav-link" href="#Introduction" rel="internal"><li>Overview</li></a>
+          <a class="nav-link" href="#What_you_should_already_know" rel="internal"><li>Assumptions</li></a>
+          <a class="nav-link" href="#JavaScript_and_Java" rel="internal"><li>Why use WP-CLI</li></a>
+          <a class="nav-link" href="#Hello_world" rel="internal"><li>Installation</li></a>
+          <a class="nav-link" href="#Variables" rel="internal"><li>Updating WP Core</li></a>
+          <a class="nav-link" href="#Declaring_variables" rel="internal"><li>Updating Plugins</li></a>
+          <a class="nav-link" href="#Variable_scope" rel="internal"><li>Updating Themes</li></a>
+          <a class="nav-link" href="#Global_variables" rel="internal"><li>Installing WP Core</li></a>
+          <a class="nav-link" href="#Reference" rel="internal"><li>Reference</li></a>
+        </ul>
+      </nav>
+      <main id="main-doc">
+        <section class="main-section" id="Introduction">
+          <header>Overview</header>
+          <article>  
+            <p>WP-CLI is a command line tool that can be install on most *NIX based servers to install and manage WordPress sites.</p>
+      
+                  <p>WP-CLI is a community effort, which you can read about on <a href="https://wp-cli.org/" alt="WP-CLI Website">their website.</a></p>
+      
+            </artice>
+          </section>
+        <section class="main-section" id="What_you_should_already_know">
+          <header>Assumptions</header>
+          <article>
+            <p>This guide assumes you have the following basic background:</p>
+                  <li>Comfortable with PHP/MySql</li>
+                  <li>Comfortable with Command Line</li>
+            <li>You have installed WordPress manually via FTP or a File Manager.</li>
+            <li>Working knowledge of Shell/Terminal on UNIX machines or servers.</li>
+      <li>You have, or pay for, a webserver with SSH access.</li>
+            </artice>
+          </section>
+        <section class="main-section" id="JavaScript_and_Java">
+          <header>Why use WP-CLI?</header>
+          <article>
+          <p>You can quickly update all your themes and plugins and even script this in bash to cycle through all your WordPress installation directories. You can script new WordPress installs, add users and perform bulk edits to your WordPress database(s)... and Dry Run the operations to see results before committing them.</p>
+      
+          </article>
+          </section>
+        <section class="main-section" id="Hello_world">
+          <header>Installing WP-CLI</header>
+          <article> 
+      the "$" stands for your command prompt so only copy paste the command after the $ and hit "enter" for each line. There are 4 steps to install WP-CLI:
+      <code>	
+          $ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          $ php wp-cli.phar --info
+          $ chmod +x wp-cli.phar
+          $ sudo mv wp-cli.phar /usr/local/bin/wp
+      
+      </code>
+      
+                  First you use curl to download the wp-cli.phar file, then you verify it. The command chmod +x makes the file executable and sudo mv moves the file to a place more than likey listed in your PATH. 
+                  
+          </article>
+          </section>
+        <section class="main-section" id="Variables">
+          <header>Updating WP Core</header>
+          <p>
+      You can quickly update your WordPress install(s) by navigating to your WordPress install and running a simple command.
+          </p>
+              <code>
+                  $ cd ~/this/is/usually/public_html/wordPressSite/
+                  $ wp core check-update
+                  $ wp core update
+              </code>
+              <p>First we navigated to the WordPress installation directory, then we checked for an update to the core and ran the update if there was one.</p>
+         
+          </section>
+        <section class="main-section" id="Declaring_variables">
+          <header>Updating Plugins</header>
+          <article>
+      <p>You can List, Enable, Disable and Update Plugins:</p>
+      <code>
+          
+          $ wp plugin list
+          $ wp disable plugin [[plugin name]]
+          $ wp plugin update --all
+                  
+          </code>
+            
+          </article>
+          </section>
+        <section class="main-section" id="Variable_scope">
+          <header>Updating Themes</header>
+          <article>
+      <p>You can List, Enable, Disable and Update Plugins:</p>
+      <code>
+          
+          $ wp theme list
+          $ wp disable theme [[plugin name]]
+          $ wp theme update --all
+                  
+          </code>
+            
+          </article>
+          </section>
+        <section class="main-section" id="Global_variables">
+          <header>Installing Core</header>
+              <article>
+      <p>You can Install WP Core quickly and even hide the admin password from the bash history (see reference):</p>
+      <code>
+          
+      $ wp core install --url=example.com --title=Example --admin_user=supervisor --admin_password=strongpassword --admin_email=info@example.com
+              
+          </code>
+            
+          </article>
+          </section>
+      
+          
+        <section class="main-section" id="Reference">
+          <header>Reference</header>
+          <article>
+            <li>All the documentation in this page is taken from <a href="https://wp-cli.org/" target="_blank">https://wp-cli.org</a>
+          </article>
+          </section>
+      </main>
+</html>
